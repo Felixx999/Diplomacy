@@ -1,0 +1,37 @@
+set,id,name_ru,name_en,short,short_en,archetype,note
+cn,state,Министерство иностранных дел,Ministry of Foreign Affairs,МИД,Foreign,diplomat,внешняя политика
+cn,reform,Комиссия по развитию и реформам,Development and Reform Commission,Госплан,Planning,technocrat,планирование и крупные стройки
+cn,defense,Министерство обороны,Ministry of Defence,Оборона,Defence,hawk,вооружённые силы
+cn,security,Министерство государственной безопасности,Ministry of State Security,Госбезопасность,State Security,spymaster,разведка и внутренний контроль
+cn,commerce,Министерство коммерции,Ministry of Commerce,Коммерция,Commerce,trader,внешняя торговля и инвестиции
+cn,industry,Министерство промышленности,Ministry of Industry,Промышленность,Industry,energy_boss,производство и технологии
+cn,finance,Министерство финансов,Ministry of Finance,Финансы,Finance,technocrat,бюджет и налоги
+cn,agriculture,Министерство сельского хозяйства,Ministry of Agriculture,Село,Agriculture,trader,продовольствие
+cn,propaganda,Отдел пропаганды,Propaganda Department,Идеология,Propaganda,ideologue,информационная политика
+cn,water,Министерство водных ресурсов,Ministry of Water Resources,Вода и земля,Water,energy_boss,инфраструктура и ресурсы
+ru,state,Министерство иностранных дел,Ministry of Foreign Affairs,МИД,Foreign,diplomat,внешняя политика
+ru,defense,Министерство обороны,Ministry of Defence,Оборона,Defence,hawk,вооружённые силы
+ru,security,Служба безопасности,Security Service,Безопасность,Security,spymaster,разведка и контрразведка
+ru,finance,Министерство финансов,Ministry of Finance,Финансы,Finance,technocrat,бюджет и резервы
+ru,energy,Министерство энергетики,Ministry of Energy,Энергетика,Energy,energy_boss,нефть газ и атом
+ru,industry,Министерство промышленности,Ministry of Industry,Промышленность,Industry,energy_boss,оборонный заказ
+ru,interior,Министерство внутренних дел,Ministry of the Interior,МВД,Interior,ideologue,порядок и надзор
+ru,economy,Министерство экономического развития,Ministry of Economic Development,Экономика,Economy,trader,рост и внешняя торговля
+ru,agriculture,Министерство сельского хозяйства,Ministry of Agriculture,Село,Agriculture,trader,экспорт зерна
+ru,emergency,Министерство по чрезвычайным ситуациям,Ministry of Emergencies,ЧС,Emergencies,populist,катастрофы и мобилизация
+ir,state,Министерство иностранных дел,Ministry of Foreign Affairs,МИД,Foreign,diplomat,переговоры и санкции
+ir,defense,Министерство обороны,Ministry of Defence,Оборона,Defence,hawk,армия и корпус стражей
+ir,intel,Министерство разведки,Ministry of Intelligence,Разведка,Intelligence,spymaster,внешняя и внутренняя разведка
+ir,oil,Министерство нефти,Ministry of Petroleum,Нефть,Petroleum,energy_boss,экспорт углеводородов
+ir,economy,Министерство экономики,Ministry of Economy,Экономика,Economy,technocrat,финансы в условиях санкций
+ir,culture,Министерство культуры и ориентации,Ministry of Culture and Guidance,Культура,Culture,ideologue,идеология и надзор
+ir,agriculture,Министерство сельского хозяйства,Ministry of Agriculture,Село,Agriculture,trader,продовольственная безопасность
+ir,interior,Министерство внутренних дел,Ministry of the Interior,МВД,Interior,ideologue,порядок и выборы
+gulf,state,Министерство иностранных дел,Ministry of Foreign Affairs,МИД,Foreign,diplomat,региональная дипломатия
+gulf,defense,Министерство обороны,Ministry of Defence,Оборона,Defence,hawk,вооружённые силы
+gulf,interior,Министерство внутренних дел,Ministry of the Interior,МВД,Interior,spymaster,безопасность и порядок
+gulf,energy,Министерство энергетики,Ministry of Energy,Энергетика,Energy,energy_boss,нефть и нефтехимия
+gulf,finance,Министерство финансов,Ministry of Finance,Финансы,Finance,technocrat,бюджет и суверенный фонд
+gulf,investment,Министерство инвестиций,Ministry of Investment,Инвестиции,Investment,trader,диверсификация экономики
+gulf,islamic,Министерство по делам ислама,Ministry of Islamic Affairs,Религиозные дела,Islamic Affairs,ideologue,религиозная политика
+gulf,hajj,Министерство хаджа,Ministry of Hajj,Хадж,Hajj,populist,паломничество и репутация

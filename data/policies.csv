@@ -1,0 +1,35 @@
+id,name_ru,name_en,ministry,default,affects,effect,note
+milex_level,Уровень военных расходов,Defence spending level,defense,0.50,milex_bn,0.80,прямо входит в совокупную мощь
+conscription,Призыв и численность армии,Conscription,defense,0.45,troops_k,0.70,
+defense_export,Экспорт вооружений,Arms exports,defense,0.40,,0.00,открывает поставки третьим странам
+tariffs,Тарифная защита,Tariff protection,commerce,0.40,,0.00,снижает взаимную зависимость
+investment_screening,Контроль иностранных инвестиций,Investment screening,commerce,0.35,,0.00,
+export_control,Экспортный контроль технологий,Export controls,commerce,0.40,,0.00,
+energy_transition,Энергопереход,Green transition,energy,0.35,energy_mtoe,-0.30,
+resource_nationalism,Национализация ресурсов,Resource nationalism,interior,0.30,,0.00,
+alliance_depth,Глубина союзных обязательств,Alliance depth,state,0.45,,0.00,
+immigration,Открытость миграции,Immigration openness,homeland,0.40,pop_mn,0.12,
+welfare,Социальные расходы,Welfare,health,0.50,,0.00,
+industrial_policy,Промышленная политика,Industrial policy,commerce,0.40,steel_mt,0.45,
+rnd,Расходы на науку,Research spending,education,0.40,gdp_bn,0.10,
+surveillance,Полномочия спецслужб,Security service powers,homeland,0.40,vdem_liberal,-0.25,
+religion_state,Роль религии в государстве,Religion in public life,justice,0.30,,0.00,
+farm_support,Поддержка села,Farm support,agriculture,0.50,gdp_bn,0.10,
+food_security,Продовольственные резервы,Food reserves,agriculture,0.40,,0.00,
+labor_rights,Трудовое законодательство,Labour law,labor,0.50,,0.00,
+union_power,Роль профсоюзов,Union power,labor,0.35,,0.00,
+healthcare,Доступность медицины,Healthcare access,health,0.55,pop_mn,0.15,
+housing_program,Жилищные программы,Housing programmes,housing,0.45,,0.00,
+urban_renewal,Развитие городов,Urban renewal,housing,0.40,gdp_bn,0.08,
+infrastructure,Дорожное и железнодорожное строительство,Infrastructure,transport,0.50,gdp_bn,0.20,
+aviation,Авиационная отрасль,Aviation,transport,0.40,,0.00,
+schools,Школьный стандарт,School standards,education,0.55,,0.00,
+veteran_care,Обеспечение ветеранов,Veteran care,veterans,0.45,,0.00,
+border_control,Охрана границы,Border control,homeland,0.50,,0.00,
+nuclear_arsenal,Ядерный арсенал,Nuclear arsenal,energy,0.35,milex_bn,0.25,
+land_use,Землепользование и парки,Land use,interior,0.40,,0.00,
+prosecution,Правоприменение,Law enforcement,justice,0.45,,0.00,
+public_finance,Долг и заимствования,Public debt,treasury,0.50,gdp_bn,-0.10,
+foreign_aid,Внешняя помощь,Foreign aid,state,0.35,,0.00,открывает двери но злит налогоплательщиков
+tax_rate,Налоговая нагрузка,Tax burden,treasury,0.50,gdp_bn,-0.15,
+civil_liberties,Гражданские свободы,Civil liberties,justice,0.55,,0.00,прямо влияет на качество режима

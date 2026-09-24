@@ -1,0 +1,7 @@
+component,column,coverage,note
+gdp,gdp_bn,0.7551,доля мирового ВВП у наших 32 стран
+population,pop_mn,0.6467,доля мирового населения
+military,milex_bn,0.8368,доля мировых военных расходов
+energy,energy_mtoe,0.7876,доля мирового потребления первичной энергии
+industry,steel_mt,0.914,доля мировой выплавки стали
+personnel,troops_k,0.664,доля мировой численности вооружённых сил

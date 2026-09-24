@@ -1,0 +1,5 @@
+id,name_ru,name_en,ministry,unlocks,note
+diplomatic,Дипломатическая,Diplomatic,state,negotiate;recognize;summit,переговоры и международные организации
+military,Военно-политическая,Military and political,defense,alliance;arms;bases;peacekeeping,оборонные альянсы и миротворчество
+economic,Внешнеэкономическая,Economic,commerce,trade_deal;sanctions;aid;investment,торговля санкции инвестиции помощь
+cultural,Гуманитарная и культурная,Cultural and humanitarian,education,grants;exchange;rights,образование обмены права человека

@@ -1,0 +1,11 @@
+id,name_ru,name_en,controller,claimant,recognition_share,salience_controller,salience_claimant,heat,type,issue_type
+taiwan,Тайваньский пролив,Taiwan Strait,TWN,CHN,0.08,0.95,0.90,0.55,sovereignty,sovereignty
+scs,Южно-Китайское море,South China Sea,CHN,PHL,0.10,0.55,0.70,0.40,maritime,maritime
+kashmir,Кашмир,Kashmir,IND,PAK,0.15,0.70,0.85,0.45,territory,territory
+senkaku,Сенкаку,Senkaku,JPN,CHN,0.35,0.40,0.45,0.25,maritime,maritime
+golan,Голанские высоты,Golan Heights,ISR,SYR,0.05,0.60,0.55,0.30,territory,territory
+westbank,Западный берег,West Bank,ISR,PSE,0.75,0.65,0.95,0.70,sovereignty,sovereignty
+kuriles,Южные Курилы,Southern Kurils,RUS,JPN,0.20,0.35,0.50,0.20,territory,territory
+kosovo,Косово,Kosovo,XKX,SRB,0.55,0.80,0.70,0.25,sovereignty,recognition
+cyprus,Северный Кипр,Northern Cyprus,TUR,CYP,0.02,0.45,0.75,0.20,sovereignty,sovereignty
+sahara,Западная Сахара,Western Sahara,MAR,SAH,0.30,0.60,0.65,0.20,sovereignty,sovereignty

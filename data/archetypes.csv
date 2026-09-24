@@ -1,0 +1,9 @@
+id,name_ru,name_en,competence,loyalty,branch,suits,note
+technocrat,Технократ,Technocrat,0.80,0.55,treasury,trade,"цифры и бюджет, но слаб в политике"
+hawk,Ястреб,Hawk,0.65,0.70,defense,hostile,"жёсток с противниками, портит переговоры"
+trader,Торговый переговорщик,Trade negotiator,0.75,0.50,commerce,trade,выторговывает лучшие условия
+diplomat,Дипломат старой школы,Career diplomat,0.70,0.60,state,friendly,"открывает двери там, где есть доверие"
+spymaster,Разведчик,Spymaster,0.72,0.65,justice,hostile,добывает сведения дешевле
+ideologue,Идеолог,Ideologue,0.55,0.85,justice,friendly,"верен до конца, негибок"
+energy_boss,Отраслевой руководитель,Industry boss,0.68,0.45,energy,trade,"знает отрасль, лоббирует своих"
+populist,Популист,Populist,0.50,0.40,homeland,friendly,"нравится улице, пугает элиты"

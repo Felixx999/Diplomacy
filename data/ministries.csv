@@ -1,0 +1,16 @@
+id,name_ru,name_en,short,short_en,archetype,note
+state,Государственный департамент,Department of State,Госдеп,State,diplomat,внешняя политика и дипломатические отношения
+treasury,Министерство финансов,Department of the Treasury,Финансы,Treasury,technocrat,налоги и денежное обращение
+defense,Министерство обороны,Department of Defense,Оборона,Defense,hawk,вооружённые силы
+justice,Министерство юстиции,Department of Justice,Юстиция,Justice,ideologue,исполнение законов и надзор
+interior,Министерство внутренних дел,Department of the Interior,Внутренние дела,Interior,energy_boss,природные ресурсы и земли
+agriculture,Министерство сельского хозяйства,Department of Agriculture,Сельское хозяйство,Agriculture,trader,агропром и продовольственная безопасность
+commerce,Министерство торговли,Department of Commerce,Торговля,Commerce,trader,экономический рост и бизнес
+labor,Министерство труда,Department of Labor,Труд,Labor,populist,права работников и рынок труда
+health,Министерство здравоохранения,Department of Health,Здравоохранение,Health,technocrat,медицина и социальное обеспечение
+housing,Министерство жилищного строительства,Department of Housing,Жильё,Housing,populist,жилищная политика и города
+transport,Министерство транспорта,Department of Transportation,Транспорт,Transport,technocrat,дороги авиация и железные дороги
+energy,Министерство энергетики,Department of Energy,Энергетика,Energy,energy_boss,энергобезопасность и ядерный арсенал
+education,Министерство образования,Department of Education,Образование,Education,ideologue,стандарты и помощь учебным заведениям
+veterans,Министерство по делам ветеранов,Department of Veterans Affairs,Ветераны,Veterans,hawk,помощь бывшим военнослужащим
+homeland,Министерство внутренней безопасности,Department of Homeland Security,Внутренняя безопасность,Homeland,spymaster,границы и чрезвычайные ситуации

@@ -1,0 +1,6 @@
+id,name_ru,base_groups,d_security,d_economy,d_prestige,d_ideology,d_regime,d_risk,d_revisionism,d_horizon
+nat_cons,Национал-консерваторы,nationalists;religious;farmers,0.10,-0.05,0.08,-0.08,0.05,0.15,0.20,-2
+lib_center,Либеральный центр,urban_liberal;exporters,-0.08,0.10,-0.02,0.10,-0.05,-0.15,-0.15,4
+social_left,Социал-демократы,unions;farmers;taxpayers,-0.10,0.08,-0.05,0.05,0.00,-0.12,-0.10,2
+security_bloc,Силовой блок,military;defense_industry;nationalists,0.18,-0.08,0.05,-0.10,0.10,0.20,0.18,-4
+business_right,Правые либералы,exporters;energy;taxpayers,-0.05,0.15,-0.03,0.02,-0.03,-0.05,-0.08,3

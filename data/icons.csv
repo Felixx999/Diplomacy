@@ -1,0 +1,64 @@
+kind,id,icon,note
+ministry,state,building-bank,внешняя политика
+ministry,treasury,coins,финансы
+ministry,defense,shield,оборона
+ministry,justice,gavel,юстиция
+ministry,interior,mountain,природные ресурсы
+ministry,agriculture,plant-2,сельское хозяйство
+ministry,commerce,building-store,торговля
+ministry,labor,tools,труд
+ministry,health,heartbeat,здравоохранение
+ministry,housing,home,жильё
+ministry,transport,truck,транспорт
+ministry,energy,bolt,энергетика
+ministry,education,school,образование
+ministry,veterans,medal,ветераны
+ministry,homeland,fence,внутренняя безопасность
+ministry,reform,chart-arrows,планирование
+ministry,security,eye,госбезопасность
+ministry,industry,building-factory-2,промышленность
+ministry,propaganda,speakerphone,идеология
+ministry,water,droplet,вода и земля
+ministry,economy,trending-up,экономика
+ministry,emergency,urgent,чрезвычайные ситуации
+ministry,intel,spy,разведка
+ministry,oil,barrel,нефть
+ministry,culture,book,культура
+ministry,finance,coins,финансы
+ministry,investment,briefcase,инвестиции
+ministry,islamic,moon,религиозные дела
+ministry,hajj,route,хадж
+direction,diplomatic,messages,переговоры
+direction,military,swords,военно-политическая
+direction,economic,businessplan,внешнеэкономическая
+direction,cultural,world-heart,гуманитарная
+issue,sovereignty,flag,суверенитет
+issue,territory,map-2,территория
+issue,maritime,anchor,морская зона
+issue,recognition,writing-sign,признание
+issue,sanctions,ban,санкции
+issue,tariffs,packages,тарифы
+issue,arms,rocket,вооружения
+issue,bases,building-fortress,базы
+issue,energy,flame,энергоносители
+issue,alliance,users-group,союз
+issue,aid,heart-handshake,помощь
+issue,nuclear,radioactive,ядерная программа
+group,military,badge,военные
+group,nationalists,flag-3,националисты
+group,exporters,ship,экспортёры
+group,unions,users,профсоюзы
+group,farmers,wheat,аграрии
+group,urban_liberal,building-skyscraper,городской класс
+group,religious,building-church,религиозные
+group,energy,bolt,энергетика
+group,defense_industry,settings-cog,оборонпром
+group,taxpayers,receipt,налогоплательщики
+scale,relation,heart,отношения
+scale,threat,alert-triangle,угроза
+scale,trust,shield-check,доверие
+scale,intel,binoculars,разведка
+scale,mood,mood-neutral,настроение
+scale,zone,arrows-horizontal,простор для торга
+scale,capital,wallet,ресурс
+scale,power,crown,вес страны

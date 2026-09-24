@@ -1,0 +1,228 @@
+key,ru,en
+ui.title,Депеша,Dispatch
+ui.next,Следующий месяц,Next month
+ui.save,Сохранить,Save
+ui.load,Загрузить,Load
+ui.search,Поиск,Search
+ui.sound_on,Звук вкл,Sound on
+ui.sound_off,Звук выкл,Sound off
+ui.turn,ход {turn} из 192,turn {turn} of 192
+tab.dash,Пульт,Desk
+tab.cabinet,Кабинет,Cabinet
+tab.course,Курс,Policy
+tab.world,Мир,World
+tab.doss,Досье,Dossier
+dash.agenda,Требует решения,Needs a decision
+dash.world,Мир,World
+dash.state,Состояние,Standing
+dash.hot,Очаги,Flashpoints
+dash.quiet,Спокойный месяц. Обязательных решений нет.,A quiet month. Nothing demands a decision.
+dash.graph_note,"Толщина связи — взаимная зависимость. Синие связи дружественные, охряные враждебные.","Line weight is mutual dependence. Blue ties are friendly, ochre hostile."
+state.political,влияние дома,domestic influence
+state.diplomatic,дипломатия,diplomacy
+state.coalition,коалиция,coalition
+state.currency,курс валюты,currency
+state.power,вес страны,standing
+cab.title,Кабинет,Cabinet
+cab.vacancies,вакансий {n} из {total},{n} of {total} posts vacant
+cab.vacant,без руководителя,vacant
+cab.fit,пригодность,fit
+cab.appoint,Кого назначить министром,Who takes the department
+course.capital,Запас влияния,Influence in hand
+course.no_minister,без министра,no minister
+world.directions,Направления внешней политики,Lines of foreign policy
+world.blocs,Блоки,Blocs
+world.embassies,Посольства,Embassies
+world.clients,клиентов: {n},clients: {n}
+world.no_envoy,нет посла,no ambassador
+world.send,Кого отправить послом,Who goes as ambassador
+world.ours,наш,ours
+doss.sells,Что страна продаёт,What the country sells
+doss.gdp,Размер экономики,Economy
+doss.percap,На душу населения,Per head
+doss.rate,Курс валюты,Currency
+doss.balance,Торговый баланс,Trade balance
+doss.buyers,Главные покупатели,Main buyers
+doss.disputes,Споры,Disputes
+doss.deals,Действующие соглашения,Agreements in force
+doss.relations,Отношения с нами,Relations with us
+doss.alignment,Интересы,Interests
+doss.threat,Угроза,Threat
+doss.trust,Доверие,Trust
+doss.intel,Разведка,Intelligence
+doss.envoy,Посол,Ambassador
+doss.not_set,не назначен,not appointed
+doss.issues,Живые вопросы,Live questions
+doss.nothing,Обсуждать нечего.,Nothing to discuss.
+doss.room,простор для торга: {zone},room to bargain: {zone}
+doss.cancel,Расторгнуть,Terminate
+doss.weight_of,Из чего складывается вес,What the standing rests on
+neg.title,Переговоры: {country},Talks: {country}
+neg.home_limit,дома пройдёт до {n},passes at home up to {n}
+neg.they_ask,партнёр просит {lo}–{hi},they ask {lo}–{hi}
+neg.concession,Уступка,Concession
+neg.sign,Подписать,Sign
+neg.spy,"Разведать, {cost}","Gather intelligence, {cost}"
+neg.package,Собрать пакет,Build a package
+neg.walk,Уйти,Walk away
+neg.intel_room,Разведка: {intel}. Простор для торга: {zone}.,Intelligence: {intel}. Room to bargain: {zone}.
+neg.leaves_at,{group} уходят на {level},{group} break at {level}
+pkg.title,Пакет со встречной уступкой,Package with a counter-concession
+pkg.solo_fails,В одиночку этот вопрос решения не имеет. Пакет — единственный путь.,On its own this question has no solution. A package is the only way.
+pkg.solo_ok,"Вопрос решается и отдельно, но пакет выгоднее.","It can be settled alone, but the package is better."
+pkg.we_give,уступаем мы,we concede
+pkg.they_give,уступают они,they concede
+pkg.sign,Подписать пакет,Sign the package
+pkg.decline,Отказаться,Decline
+month.title,"Итог месяца, {date}","The month, {date}"
+month.quiet,Месяц прошёл тихо.,The month passed quietly.
+month.continue,"Нажмите вне окна, чтобы продолжить.",Click outside to continue.
+month.real,Как было у нас,How it went for us
+month.pleased,довольны: {who},pleased: {who}
+month.paid,заплатили: {who},paid for it: {who}
+end.share,Ваш мир разошёлся с нашей хронологией на {pct}%.,Your world diverged from ours by {pct}%.
+end.changed,Что вышло иначе,What turned out differently
+end.again,Попробуете иначе?,Care to try it differently?
+search.title,Поиск,Search
+search.hint,"страна, министерство, рычаг, группа, человек","country, department, lever, group, person"
+search.enter,Enter — перейти к первому.,Enter goes to the first result.
+search.empty,ничего не нашлось,nothing found
+open.question,С чего начнёте?,Where do you begin?
+open.note,Ваш ответ станет первым ходом.,Your answer becomes your first move.
+open.playing,играете за: {country},you play: {country}
+kind.country,страна,country
+kind.ministry,министерство,department
+kind.lever,рычаг,lever
+kind.group,группа,group
+kind.issue,вопрос,question
+kind.person,человек,person
+kind.deal,соглашение,agreement
+stamp.urgent,СРОЧНО,URGENT
+stamp.important,ВАЖНО,PRIORITY
+stamp.info,К СВЕДЕНИЮ,FOR INFORMATION
+dash.cabinet,Кабинет в лицах,Cabinet at a glance
+dash.legend_warm,дружба,friendly
+dash.legend_cold,вражда,hostile
+dash.legend_pact,договор,treaty
+dash.from,от,from
+air.calm,в мире спокойно,the world is calm
+air.tense,нарастает напряжение,tension is rising
+air.crisis,кризис,crisis
+dash.vacant_n,вакансий: {n},vacancies: {n}
+dash.deals_n,соглашений в работе: {n},agreements in progress: {n}
+rc.move,"{actor}: {kind}, адресат {target}","{actor}: {kind}, aimed at {target}"
+rc.kept,сдержано слово перед страной {who},kept its word to {who}
+rc.broken,нарушено слово перед страной {who},broke its word to {who}
+rc.switch,{who} сменил покровителя,{who} changed patrons
+act.sanction,санкции,sanctions
+act.aid,помощь,aid
+act.deal,соглашение,agreement
+act.arms,поставки оружия,arms
+act.escalate,эскалация,escalation
+act.concede,уступка,concession
+act.recognize,признание,recognition
+area.foreign,внешняя политика,foreign affairs
+area.home,внутренняя политика,home affairs
+src.escalation,эскалация,escalation
+src.due,наступил срок,deadline
+src.mood,настроение группы,public mood
+src.client,охлаждение клиента,a client cools
+src.loan,срок займа,loan due
+src.offer,предложение партнёра,an offer
+src.inherit,досталось по наследству,inherited
+src.friction,спор в кабинете,cabinet quarrel
+esc.stage.calm,затишье,a lull
+esc.stage.tension,напряжение растёт,tension rises
+esc.stage.crisis,кризис,crisis
+esc.stage.showdown,развязка,showdown
+esc.res.control,контроль перешёл,control changes hands
+esc.res.retreat,претендент отступил,the claimant backs down
+ag.dispute.title,{dispute}: {what},{dispute}: {what}
+ag.dispute.raises,{who} повышает ставки.,{who} raises the stakes.
+ag.dispute.we_give,Уступать придётся нам.,Any concession will have to be ours.
+ag.dispute.we_claim,"Требование наше, но силы не на нашей стороне.","The claim is ours, but the balance of power is not."
+ag.promise.title,Наступает срок обещания: {who},A promise falls due: {who}
+ag.promise.body,Мы обещали: {what}. Исполнять или отказаться.,We promised: {what}. Keep it or walk away.
+ag.mood.title,{group}: недовольство,{group} are unhappy
+ag.mood.body,Настроение: {mood}. Дальше это начнёт стоить нам голосов при ратификации.,Mood: {mood}. Soon this will cost us votes when treaties come up for ratification.
+ag.client.title,{who} отдаляется,{who} is drifting away
+ag.client.body,Покровительство держится на честном слове. Соперники рядом.,Our patronage hangs by a thread. Rivals are close.
+ag.loan.title,Подходит срок по займу влияния,A loan of influence falls due
+ag.loan.body,"Придётся вернуть больше, чем брали. Если платить нечем, заплатят настроения.","We owe more than we borrowed. If we cannot pay, public mood will."
+ag.offer.title,{who}: {what},{who}: {what}
+ag.offer.body,Просят от {lo} до {hi}. Наша разведка: {intel}.,They ask {lo} to {hi}. Our intelligence: {intel}.
+ag.inh.cab.title,Кабинет не укомплектован,The cabinet is incomplete
+ag.inh.cab.body,"Без руководителей остались: {names}. Пока места пусты, часть внешних действий недоступна.","Still without a head: {names}. Until these posts are filled, some foreign actions are closed to us."
+ag.inh.disp.title,{dispute}: спор достался по наследству,{dispute}: an inherited dispute
+ag.inh.disp.body,Предшественник его не решил. Ставки высоки для обеих сторон.,Our predecessor never settled it. The stakes are high on both sides.
+ag.inh.deals.title,Чужие обязательства в исполнении,Someone else's commitments
+ag.inh.deals.body,"{giver} передаёт стране {receiver}: {what}. Исполнено {pct}. Подписывали не вы, отвечать вам.","{giver} owes {receiver}: {what}. {pct} delivered. You did not sign it, but it is yours to answer for."
+ag.fr.title,Спор ведомств: {a} и {b},{a} against {b}
+ag.fr.body,"{why}. Пока они спорят, решения идут медленнее.","{why}. While they argue, decisions slow down."
+fr.hawk_diplomat,"Оборона требует жёсткости, дипломатия — уступок","Defence wants firmness, diplomacy wants concessions"
+fr.hawk_trader,Военные расходы против открытой торговли,Military spending against open trade
+fr.ideologue_trader,Идеология против выгоды,Ideology against profit
+fr.ideologue_technocrat,Принципы против расчёта,Principle against arithmetic
+fr.spymaster_populist,Закрытость против публичности,Secrecy against publicity
+fr.energy_boss_technocrat,Отраслевой интерес против бюджета,An industry's interest against the budget
+fr.populist_technocrat,Обещания улице против арифметики,Promises to the street against arithmetic
+fr.generic,Министры тянут в разные стороны,The ministers pull in different directions
+ch.negotiate,Пойти на переговоры,Open talks
+ch.negotiate.h,"торг откроется, но уступка потребует ратификации","bargaining begins, but any concession needs ratifying"
+ch.hold,Держать позицию,Hold firm
+ch.hold.h,"накал вырастет, зато дома одобрят","tension will rise, but it plays well at home"
+ch.package,Собрать пакет со встречной уступкой,Build a package with a counter-concession
+ch.package.h,неделимый вопрос решается доплатой по другому,an indivisible question is settled by paying in another
+ch.concede,Уступить публично,Concede in public
+ch.concede.h,"спор остынет, националисты не простят","the dispute cools, the nationalists will not forgive it"
+ch.concede.b,националисты и так на грани,the nationalists are already at the edge
+ch.keep,Исполнить,Keep it
+ch.keep.h,"стоит политического капитала, доверие растёт","costs influence, earns trust"
+ch.breach,Отказаться,Walk away
+ch.breach.h,"капитал сэкономлен, доверие падает надолго","influence saved, trust lost for a long time"
+ch.toward,Пойти навстречу курсом,Shift policy their way
+ch.toward.h,"сдвинет политику в их сторону, другие группы заметят","moves policy toward them, and other groups will notice"
+ch.buy,Купить лояльность,Buy their loyalty
+ch.buy.h,"стоит влияния, действует недолго",costs influence and does not last
+ch.buy.b,не хватает влияния,not enough influence
+ch.ignore,Проигнорировать,Ignore it
+ch.ignore.h,"бесплатно сейчас, дороже потом","free now, costly later"
+ch.invest,Вложиться в отношения,Invest in the relationship
+ch.invest.h,"дорого, но связь удержится","expensive, but the tie will hold"
+ch.release,Отпустить,Let them go
+ch.release.h,"вернёт влияние, националисты против","frees influence, the nationalists object"
+ch.wait,Ничего не делать,Do nothing
+ch.wait.h,может обойдётся,it may blow over
+ch.budget,Найти средства в бюджете,Find the money in the budget
+ch.budget.h,"налоги вверх, недовольство","taxes up, discontent with it"
+ch.sell,Продать актив,Sell an asset
+ch.sell.h,быстро и необратимо,quick and irreversible
+ch.sell.b,продавать нечего,nothing left to sell
+ch.await,Дождаться срока,Wait for the deadline
+ch.await.h,недостачу оплатят все группы сразу,every group pays the shortfall at once
+ch.accept,Согласиться,Accept
+ch.accept.h,"исполняется частями, потребует ратификации","delivered in stages, needs ratifying"
+ch.spy,Сначала разведать,Investigate first
+ch.spy.h,"сузит интервал, стоит дипломатии","narrows the range, costs diplomacy"
+ch.spy.b,не хватает дипломатического ресурса,not enough diplomatic capacity
+ch.decline,Отклонить,Decline
+ch.decline.h,отношения слегка остынут,relations will cool a little
+ch.appoint,Заняться назначениями,Make appointments
+ch.appoint.h,открыть кабинет и выбрать людей,open the cabinet and choose people
+ch.leave,Оставить как есть,Leave it
+ch.leave.h,"руки свободнее, но ветви не работают","hands free, but those lines stay closed"
+ch.talks,Начать переговоры,Begin talks
+ch.talks.h,"торг откроется, дома придётся объясняться","bargaining begins, and home will want explanations"
+ch.freeze,Заморозить вопрос,Freeze the question
+ch.freeze.h,"накал не спадёт, но и не вырастет",the tension neither falls nor rises
+ch.honour,Исполнять дальше,Keep honouring it
+ch.honour.h,"репутация целее, ресурсы уходят","reputation intact, resources drain"
+ch.revise,Пересмотреть,Renegotiate
+ch.revise.h,"освободит руки, доверие упадёт","frees our hands, trust falls"
+ch.revise.b,это соглашение необратимо,this agreement cannot be undone
+ch.back_a,Поддержать ведомство «{who}»,Back {who}
+ch.back.h,придётся сменить главу ведомства «{who}»,the head of {who} will have to go
+ch.letargue,Пусть спорят,Let them argue
+ch.letargue.h,влияние продолжит утекать,influence keeps draining
+fig.envoy,"наш посол, {country}","our ambassador, {country}"
+fig.their,"{role}, {country}","{role}, {country}"

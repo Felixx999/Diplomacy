@@ -1,0 +1,353 @@
+/* Депеша — система оформления.
+
+   Образ: рабочий стол, на котором лежат бумаги. Стол — тёмно-синий, как
+   казённые чернила. Бумага — только то, что требует решения. Всё прочее
+   живёт на столе и не спорит с бумагой за внимание.
+
+   Цвет несёт смысл, а не украшает:
+     штамп   — только срочность и кризис;
+     синий   — дружественное, охра — враждебное;
+     латунь  — своя страна и главное действие;
+     мох     — удача, согласие.
+   Ни один цвет не бывает единственным носителем смысла: рядом всегда
+   полоса или слово. */
+
+:root {
+  --desk: #16212B;
+  --desk-2: #1D2A36;
+  --desk-3: #253442;
+  --desk-line: #33475A;
+  --desk-ink: #D6DEE3;
+  --desk-muted: #8A9BA8;
+  --desk-faint: #5E7283;
+
+  --paper: #EDEFE9;
+  --paper-2: #E2E6DF;
+  --paper-line: #C3CBC4;
+  --ink: #1B2530;
+  --ink-muted: #5A6670;
+
+  --stamp: #A23328;
+  --cool: #4C8DB0;
+  --cool-deep: #2E6E8E;
+  --warm: #C08A3E;
+  --brass: #B8975A;
+  --moss: #5C8C6B;
+
+  --r-paper: 2px;
+  --r-ctl: 4px;
+
+  --sans: "IBM Plex Sans", system-ui, sans-serif;
+  --cond: "IBM Plex Sans Condensed", "IBM Plex Sans", system-ui, sans-serif;
+  --serif: "Spectral", Georgia, serif;
+}
+
+* { box-sizing: border-box }
+html, body { height: 100% }
+body {
+  margin: 0; background: var(--desk); color: var(--desk-ink);
+  font: 400 14px/1.5 var(--sans); font-variant-numeric: tabular-nums;
+  overflow: hidden;
+}
+button { font-family: inherit }
+:focus-visible { outline: 2px solid var(--brass); outline-offset: 2px }
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important }
+}
+
+/* ---------- каркас ---------- */
+
+#app { display: grid; grid-template-columns: 68px minmax(0, 1fr); height: 100vh }
+
+nav {
+  background: #111A22; border-right: 1px solid var(--desk-line);
+  display: flex; flex-direction: column; align-items: center;
+  padding-top: 12px; gap: 4px;
+}
+nav button {
+  width: 54px; height: 54px; border: 0; background: none;
+  border-radius: var(--r-ctl); color: var(--desk-muted); cursor: pointer;
+  font: 500 10px/1.2 var(--cond);
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 4px;
+}
+nav button svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.5 }
+nav button:hover { background: var(--desk-2); color: var(--desk-ink) }
+nav button.on { color: var(--brass); background: var(--desk-2); box-shadow: inset 2px 0 0 var(--brass) }
+nav .sp { flex: 1 }
+
+main { display: flex; flex-direction: column; min-width: 0; min-height: 0 }
+
+/* ---------- верхняя полоса ---------- */
+
+header {
+  display: flex; align-items: center; gap: 18px;
+  padding: 10px 20px; min-height: 64px;
+  background: #111A22; border-bottom: 1px solid var(--desk-line);
+  flex-shrink: 0;
+}
+.who { display: flex; align-items: center; gap: 10px; min-width: 0 }
+.who img.flag { width: 34px; margin: 0 }
+.who h1 { margin: 0; font: 600 18px/1.1 var(--serif); color: #fff }
+.who .when { font: 400 12px/1.2 var(--cond); color: var(--desk-muted); margin-top: 3px }
+
+.gauges { display: flex; gap: 16px; margin-left: 10px; overflow: hidden }
+.gauge { display: flex; flex-direction: column; gap: 4px; min-width: 88px }
+.gauge .lb { font: 400 11px/1 var(--cond); color: var(--desk-muted) }
+
+.air { display: flex; align-items: center; gap: 7px; font: 400 12px var(--cond); color: var(--desk-muted) }
+.air i { width: 8px; height: 8px; border-radius: 50%; background: var(--moss) }
+.air.tense i { background: var(--warm) }
+.air.crisis i { background: var(--stamp); box-shadow: 0 0 0 3px rgba(162, 51, 40, .28) }
+
+header .sp { flex: 1 }
+.btn {
+  font: 500 13px var(--sans); color: var(--desk-ink);
+  background: var(--desk-2); border: 1px solid var(--desk-line);
+  border-radius: var(--r-ctl); padding: 7px 13px; cursor: pointer;
+}
+.btn:hover { background: var(--desk-3); border-color: var(--desk-muted) }
+.btn.go { background: var(--brass); border-color: var(--brass); color: #1B1408; font-weight: 600 }
+.btn.go:hover { background: #C9A96C }
+.btn kbd { font: 500 10px var(--cond); color: var(--desk-faint); margin-left: 6px }
+
+#view { flex: 1; overflow: auto; padding: 18px 20px 48px; min-height: 0 }
+
+/* ---------- общие детали стола ---------- */
+
+h2 { font: 500 12px/1.2 var(--cond); color: var(--desk-muted); margin: 0 0 10px; letter-spacing: .02em }
+.panel { background: var(--desk-2); border: 1px solid var(--desk-line); border-radius: var(--r-ctl); padding: 12px 14px }
+.small { font-size: 12px; color: var(--desk-muted) }
+.row { display: flex; align-items: center; gap: 10px }
+.grid { display: grid; gap: 10px }
+
+.meter { display: inline-flex; gap: 2px; vertical-align: middle }
+.meter i { width: 7px; height: 13px; border-radius: 1px; background: var(--desk-line) }
+.meter i.on { background: var(--cool) }
+.meter.warn i.on { background: var(--warm) }
+.meter.bad i.on { background: var(--stamp) }
+.meter.sm i { width: 5px; height: 10px }
+.word { font-size: 12px; color: var(--desk-muted); margin-left: 7px }
+
+img.ico { vertical-align: -3px; margin-right: 6px; opacity: .7; filter: invert(1) }
+img.flag { height: auto; border: 1px solid var(--desk-line); border-radius: 2px; vertical-align: middle; margin-right: 7px; display: inline-block }
+
+/* ---------- пульт ---------- */
+
+.desk {
+  display: grid;
+  grid-template-columns: minmax(330px, 380px) minmax(0, 1fr) 250px;
+  gap: 16px; align-items: start;
+}
+
+/* Депеша — бумага на столе. Единственное смелое решение пульта: всё,
+   что требует решения, выглядит документом, всё прочее — столом. */
+.cable {
+  position: relative; background: var(--paper); color: var(--ink);
+  border-radius: var(--r-paper); padding: 16px 18px 14px 20px; margin-bottom: 14px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .35), 0 8px 22px rgba(0, 0, 0, .28);
+}
+.cable::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+  background: var(--tint, var(--paper-line)); border-radius: var(--r-paper) 0 0 var(--r-paper);
+}
+.cable .route {
+  display: flex; justify-content: space-between; gap: 10px; padding-right: 70px;
+  font: 400 11px/1.3 var(--cond); color: var(--ink-muted);
+  border-bottom: 1px solid var(--paper-line); padding-bottom: 7px; margin-bottom: 10px;
+}
+.cable .route img.ico { filter: none; opacity: .55 }
+.cable h3 { font: 600 17px/1.25 var(--serif); margin: 0 0 8px; color: var(--ink) }
+.cable p { font: 400 14.5px/1.65 var(--serif); color: #2A343D; margin: 0 0 12px }
+
+/* штамп: единственное место, где живёт красный */
+.stamp {
+  position: absolute; top: 11px; right: 14px;
+  font: 600 11px/1 var(--cond); letter-spacing: .06em;
+  color: var(--stamp); border: 1.5px solid var(--stamp); border-radius: 3px;
+  padding: 4px 7px 3px; transform: rotate(-4deg); opacity: .85;
+}
+.stamp.soft { color: var(--ink-muted); border-color: var(--ink-muted); opacity: .6 }
+
+.scene { display: flex; gap: 10px; margin: 2px 0 12px }
+.fig { width: 76px; text-align: center }
+.fig .ph { line-height: 0; border-radius: 3px; overflow: hidden; border: 1px solid var(--paper-line); background: var(--paper-2) }
+.fig .ph svg, .fig .ph img { display: block; width: 100%; height: auto }
+.fig .nm { font: 500 11px/1.25 var(--sans); color: var(--ink); margin-top: 5px }
+.fig .rl { font: 400 10px/1.25 var(--cond); color: var(--ink-muted) }
+
+.clip { width: 100%; border-radius: 2px; margin: 0 0 12px; display: block; border: 1px solid var(--paper-line) }
+
+.choices { display: flex; flex-direction: column; gap: 6px }
+.choice {
+  text-align: left; cursor: pointer; background: #fff; color: var(--ink);
+  border: 1px solid var(--paper-line); border-radius: var(--r-ctl);
+  padding: 8px 11px; font: 500 13px var(--sans);
+}
+.choice:hover { border-color: var(--ink) }
+.choice .hint { display: block; font: 400 12px/1.35 var(--sans); color: var(--ink-muted); margin-top: 2px }
+.choice:disabled { background: var(--paper-2); color: var(--ink-muted); cursor: default }
+.choice:disabled .hint { color: var(--stamp) }
+
+.quiet {
+  border: 1px dashed var(--desk-line); border-radius: var(--r-ctl);
+  padding: 28px 16px; text-align: center; color: var(--desk-muted);
+  font: 400 15px/1.5 var(--serif);
+}
+
+.table { background: #122029; border: 1px solid var(--desk-line); border-radius: var(--r-ctl); overflow: hidden }
+svg.graph { width: 100%; height: auto; display: block }
+svg.graph text { font: 500 10px var(--cond); fill: var(--desk-muted) }
+svg.graph circle { cursor: pointer }
+.legend { display: flex; gap: 14px; padding: 9px 12px; border-top: 1px solid var(--desk-line); font: 400 11px var(--cond); color: var(--desk-muted); flex-wrap: wrap }
+.legend i { display: inline-block; width: 16px; height: 2px; margin-right: 6px; vertical-align: middle }
+
+.hot { margin-top: 14px }
+.hot .it { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--desk-line) }
+.hot .it:last-child { border: 0 }
+.hot .nm { flex: 1; font: 500 13px var(--sans) }
+.hot .st { font: 400 11px var(--cond); color: var(--desk-muted) }
+
+.roster { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px }
+.roster .m { position: relative; line-height: 0; border-radius: 3px; overflow: hidden; border: 1px solid var(--desk-line); cursor: pointer; background: var(--desk-3) }
+.roster .m svg, .roster .m img { width: 100%; height: auto; display: block }
+.roster .m.vac { display: flex; align-items: center; justify-content: center; aspect-ratio: 1; border-style: dashed; color: var(--desk-faint); font: 400 18px var(--sans); line-height: 1 }
+.roster .m:hover { border-color: var(--brass) }
+.roster .m .tip { position: absolute; left: 0; right: 0; bottom: 0; padding: 3px 4px; font: 500 9px/1.2 var(--cond); color: #fff; background: linear-gradient(transparent, rgba(0, 0, 0, .78)) }
+
+.stack { display: flex; flex-direction: column; gap: 9px }
+.stat { display: flex; justify-content: space-between; align-items: center; font-size: 12px }
+.stat .lb { color: var(--desk-muted) }
+
+/* ---------- кабинет ---------- */
+
+.mins { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) }
+.min {
+  display: grid; grid-template-columns: 58px 1fr; gap: 12px; align-items: start;
+  background: var(--desk-2); border: 1px solid var(--desk-line);
+  border-radius: var(--r-ctl); padding: 11px 12px; cursor: pointer;
+}
+.min:hover { border-color: var(--desk-muted) }
+.min.vacant { border-style: dashed; background: transparent }
+.min .face { width: 58px; height: 58px; border-radius: 3px; overflow: hidden; line-height: 0; background: var(--desk-3); display: flex; align-items: center; justify-content: center; color: var(--desk-faint); font-size: 18px }
+.min .face svg, .min .face img { width: 100%; height: 100%; object-fit: cover }
+.min h3 { font: 600 14px/1.2 var(--sans); margin: 0 0 3px; color: #fff }
+.min .note { font: 400 12px/1.35 var(--sans); color: var(--desk-muted) }
+.min .who { font: 500 12px var(--sans); color: var(--cool); margin: 6px 0 4px; display: block }
+.min .who.none { color: #D06A5E }
+
+/* ---------- курс ---------- */
+
+.branch { margin-bottom: 8px; border: 1px solid var(--desk-line); border-radius: var(--r-ctl); background: var(--desk-2); overflow: hidden }
+.branch > summary { padding: 11px 14px; cursor: pointer; font: 500 14px var(--sans); list-style: none; display: flex; align-items: center; gap: 10px; color: #fff }
+.branch > summary::-webkit-details-marker { display: none }
+.branch[open] > summary { border-bottom: 1px solid var(--desk-line) }
+.lever { padding: 11px 14px; border-bottom: 1px solid var(--desk-line) }
+.lever:last-child { border: 0 }
+.lever .top { display: flex; align-items: center; gap: 12px; font-size: 13px }
+.lever input[type=range] { flex: 1; accent-color: var(--brass) }
+.lever .val, .dir .val { min-width: 28px; text-align: right; font-weight: 600; color: #fff }
+.cares { margin-top: 6px; font-size: 11px; color: var(--desk-muted) }
+.cares span { margin-right: 12px }
+.cares .up { color: #7FB08E }
+.cares .dn { color: #D06A5E }
+
+/* ---------- мир ---------- */
+
+.dirs { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)) }
+.dir { background: var(--desk-2); border: 1px solid var(--desk-line); border-radius: var(--r-ctl); padding: 12px 13px }
+.dir.off { background: transparent; border-style: dashed; color: var(--desk-muted) }
+.dir h3 { font: 600 13px var(--sans); margin: 0 0 7px; color: #fff }
+.posts { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 6px }
+.posts td { padding: 8px; border-bottom: 1px solid var(--desk-line); vertical-align: middle }
+.posts tr { cursor: pointer }
+.posts tr:hover td { background: var(--desk-2) }
+.posts .cl { font-size: 11px; color: var(--desk-muted) }
+.mini { display: inline-block; vertical-align: middle; margin-right: 8px; line-height: 0; width: 30px; height: 30px; border-radius: 3px; overflow: hidden }
+.mini svg, .mini img { width: 100%; height: 100%; display: block }
+
+/* ---------- досье ---------- */
+
+.doss { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 16px; align-items: start }
+.dossier-head { display: flex; align-items: center; gap: 12px; margin-bottom: 4px }
+.dossier-head .t { font: 600 22px/1.2 var(--serif); color: #fff }
+.dossier-head .s { font: 400 12px var(--cond); color: var(--desk-muted) }
+.dossier-head img.flag { width: 42px; margin: 0 }
+.terrain { line-height: 0; margin: 6px 0 14px; opacity: .8 }
+.bar-stack { display: flex; height: 14px; border-radius: 2px; overflow: hidden; margin: 8px 0 }
+.bar-stack i { display: block }
+.shares { font-size: 11px; color: var(--desk-muted); display: flex; flex-wrap: wrap; gap: 12px }
+.shares i { display: inline-block; width: 8px; height: 8px; border-radius: 1px; margin-right: 5px }
+table.kv { width: 100%; font-size: 13px; border-collapse: collapse }
+table.kv td { padding: 6px 0; border-bottom: 1px solid var(--desk-line) }
+table.kv td:last-child { text-align: right }
+.issue { width: 100%; text-align: left; margin-bottom: 6px; background: var(--desk-3); border: 1px solid var(--desk-line); color: var(--desk-ink); border-radius: var(--r-ctl); padding: 9px 11px; cursor: pointer; font: 500 13px var(--sans) }
+.issue:hover { border-color: var(--brass) }
+.issue .hint { display: block; font: 400 11px var(--sans); color: var(--desk-muted); margin-top: 2px }
+
+/* ---------- наложения: бумага поверх стола ---------- */
+
+.veil { position: fixed; inset: 0; background: rgba(8, 13, 18, .72); display: flex; align-items: center; justify-content: center; padding: 24px; z-index: 20 }
+.sheet {
+  background: var(--paper); color: var(--ink); border-radius: var(--r-paper);
+  width: min(780px, 100%); max-height: 88vh; overflow: auto; padding: 22px 24px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .5);
+}
+.sheet h2 { font: 600 20px/1.25 var(--serif); color: var(--ink); margin: 0 0 12px; letter-spacing: 0 }
+.sheet .small { color: var(--ink-muted) }
+.sheet .panel { background: #fff; border-color: var(--paper-line); color: var(--ink) }
+.sheet table.kv td { border-color: var(--paper-line) }
+.sheet .btn { background: #fff; color: var(--ink); border-color: var(--paper-line) }
+.sheet .btn:hover { border-color: var(--ink) }
+.sheet .btn.go { background: var(--ink); color: #fff; border-color: var(--ink) }
+.sheet .btn:disabled { color: var(--ink-muted); background: var(--paper-2); cursor: default }
+.sheet .meter i { background: var(--paper-line) }
+.sheet .meter i.on { background: var(--cool-deep) }
+.sheet .word { color: var(--ink-muted) }
+.sheet img.ico { filter: none }
+
+.track { position: relative; height: 32px; background: #fff; border-radius: 2px; border: 1px solid var(--paper-line); margin: 12px 0 6px }
+.track i { position: absolute; top: 0; bottom: 0; display: block }
+.t-home { background: rgba(192, 138, 62, .26); left: 0 }
+.t-est { background: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(27, 37, 48, .15) 4px, rgba(27, 37, 48, .15) 8px) }
+.t-ok { background: rgba(46, 110, 142, .34) }
+.t-pin { width: 2px; background: var(--ink) }
+.scale { display: flex; justify-content: space-between; font-size: 12px; color: var(--ink-muted) }
+.opp { font: 400 14px/1.6 var(--serif); color: #2A343D; margin-top: 12px }
+.opp b { font-weight: 600 }
+
+.cands { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 8px; margin-top: 10px }
+.cand { border: 1px solid var(--paper-line); border-radius: var(--r-ctl); padding: 10px 12px; background: #fff; cursor: pointer; overflow: hidden }
+.cand:hover { border-color: var(--ink) }
+.cand .nm { font: 600 13px var(--sans) }
+.cand .ar { font-size: 12px; color: var(--ink-muted); margin-bottom: 6px }
+.cand .wh { font-size: 11px; color: var(--ink-muted); margin-top: 6px }
+.cand svg, .cand img { border-radius: 3px }
+
+.hit { display: flex; align-items: center; gap: 8px; padding: 9px 10px; cursor: pointer; border-bottom: 1px solid var(--paper-line); font-size: 13px }
+.hit:hover { background: #fff }
+.hit .lb { font-weight: 600 }
+.hit .kd { font-size: 11px; color: var(--ink-muted) }
+.hit .nt { margin-left: auto; font-size: 12px; color: var(--ink-muted) }
+.hit img.ico { filter: none }
+
+.toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--paper); color: var(--ink); font: 500 13px var(--sans); padding: 9px 16px; border-radius: var(--r-ctl); z-index: 40; box-shadow: 0 10px 30px rgba(0, 0, 0, .45) }
+
+/* одно срежиссированное движение: новая депеша ложится на стол */
+@keyframes arrive { from { transform: translateY(-6px) rotate(-.4deg); opacity: 0 } to { transform: none; opacity: 1 } }
+.cable.new { animation: arrive .45s cubic-bezier(.2, .8, .3, 1) both }
+
+/* ---------- узкий экран ---------- */
+
+@media (max-width: 1180px) {
+  .desk { grid-template-columns: minmax(0, 1fr) 250px }
+  .desk > .mid { grid-column: 1 / -1; order: 3 }
+  .gauges .gauge:nth-child(n+4) { display: none }
+}
+@media (max-width: 760px) {
+  body { overflow: auto }
+  #app { grid-template-columns: 1fr; height: auto }
+  nav { flex-direction: row; justify-content: space-around; padding: 4px; position: sticky; bottom: 0; order: 2; z-index: 5 }
+  .desk, .doss { grid-template-columns: 1fr }
+  .gauges { display: none }
+}

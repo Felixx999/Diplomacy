@@ -1,0 +1,13 @@
+id,name_ru,name_en,divisibility,reversibility,ratify_difficulty,channel,horizon_q,opposes_giver,stake_source
+sovereignty,Суверенитет над территорией,Sovereignty over territory,0.00,0.05,1.35,security,36,националисты;военные,dispute
+territory,Передача территории,Territorial transfer,0.15,0.05,1.30,security,24,националисты;приграничные регионы,dispute
+maritime,Морская зона и права,Maritime zone and rights,0.60,0.20,0.95,security,18,рыболовы;военные,dispute
+recognition,Дипломатическое признание,Diplomatic recognition,0.00,0.40,1.10,ideological,6,националисты,dispute
+sanctions,Снятие санкций,Sanctions relief,0.90,0.85,0.70,trade,6,силовики;правозащитники,hostility
+tariffs,Тарифы и доступ к рынку,Tariffs and market access,1.00,0.90,0.65,trade,9,промышленники;профсоюзы,trade
+arms,Поставки вооружений,Arms transfers,0.80,0.60,0.85,security,12,пацифисты;оборонная промышленность,alliance
+bases,Военные базы и доступ,Bases and access,0.35,0.30,1.15,alliance,30,националисты;левые,alliance
+energy,Энергетические поставки,Energy supply,0.85,0.75,0.75,trade,9,промышленники,trade
+alliance,Союзные обязательства,Alliance commitments,0.25,0.25,1.20,alliance,48,изоляционисты,alliance
+aid,Финансовая помощь,Financial aid,1.00,0.95,0.60,trade,6,налогоплательщики,trade
+nuclear,Ядерная программа,Nuclear programme,0.30,0.15,1.40,security,60,силовики;националисты,hostility
