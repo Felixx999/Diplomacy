@@ -22,6 +22,11 @@ CODE = list((ROOT / "engine").glob("*.py")) + list((ROOT / "api").glob("*.py")) 
 ALL = "\n".join(p.read_text(encoding="utf-8") for p in CODE)
 WEB = "\n".join(p.read_text(encoding="utf-8")
                 for p in (ROOT / "web").glob("*.js"))
+# Новый интерфейс (client/, Р-56) зовёт движок и через HTTP, и напрямую
+# через Pyodide: его вызовы тоже считаются использованием.
+CLIENT = "\n".join(p.read_text(encoding="utf-8")
+                   for p in (ROOT / "client" / "src").rglob("*.ts")) \
+    if (ROOT / "client" / "src").exists() else ""
 
 
 def defined_functions():
@@ -49,7 +54,8 @@ def unused_functions():
         if name in FRAMEWORK or files[0] == "legibility.py":
             continue
         uses = len(re.findall(rf"\b{re.escape(name)}\s*\(", ALL))
-        if uses <= len(files):          # только определение, вызовов нет
+        page = len(re.findall(rf"\.{re.escape(name)}\s*\(", CLIENT))
+        if uses <= len(files) and not page:   # только определение, вызовов нет
             dead.append((name, files[0]))
     return sorted(dead)
 
@@ -77,8 +83,9 @@ def data_columns():
 
 
 def api_endpoints():
-    routes = sorted(set(re.findall(r'u\.path == "(/api/[a-z_]+)"', ALL)))
-    unused = [r for r in routes if r.replace("/api", "") not in WEB]
+    routes = sorted(set(re.findall(r'\bpath == "(/api/[a-z_]+)"', ALL)))
+    unused = [r for r in routes
+              if r.replace("/api", "") not in WEB + CLIENT]
     return routes, unused
 
 

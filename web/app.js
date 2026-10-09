@@ -132,7 +132,7 @@ async function viewDash() {
       <div class="roster">${roster}</div>
       <div class="panel stack" style="margin-top:12px">
         <div class="stat"><span class="lb">${T('dash.vacant_n', {n: cab.vacant})}</span></div>
-        ${d.state.map(s => `<div class="stat"><span class="lb">${esc(s.label)}</span>
+        ${d.state.map(s => `<div class="stat"><span class="lb">${esc(s.name || s.label)}</span>
           ${meter(s, tone(s), true)}</div>`).join('')}
       </div>
     </section>
@@ -149,7 +149,7 @@ function header(d) {
     <div><h1>${esc(d.country)}</h1>
     <div class="when">${esc(d.date)}, ${T('ui.turn', {turn: d.turn})}</div></div>`;
   $('#gauges').innerHTML = d.state.slice(0, 4).map(s =>
-    `<div class="gauge"><span class="lb">${esc(s.label)}</span>${meter(s, tone(s), true)}</div>`
+    `<div class="gauge"><span class="lb">${esc(s.name || s.label)}</span>${meter(s, tone(s), true)}</div>`
   ).join('');
   const a = d.ambience || {};
   const k = a.crisis > 0.6 ? 'crisis' : (a.tension > 0.5 ? 'tense' : 'calm');

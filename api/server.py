@@ -282,14 +282,22 @@ def dashboard():
         "date": w.date(), "turn": SIM.turn_no, "player": me,
         "country": cn(me),
         "flag_url": portrait.flag_url(me),
+        # Название показателя — в "name", слово деления — в "label".
+        # Раньше название шло первым и затиралось словом из band(): на
+        # экране вместо «влияние дома» стояло «с запасом».
         "state": [
-            {"label": "влияние дома", "icon": portrait.icon("scale", "capital"),
-             **band("capital", c.political_capital)},
-            {"label": "дипломатия", **band("capital", c.diplomatic_capital)},
-            {"label": "коалиция", **band("support", coalition)},
-            {"label": "курс валюты", **band("capital", econ["currency"])},
-            {"label": "вес страны", "icon": portrait.icon("scale", "power"),
-             **band("power", c.power())},
+            {**band("capital", c.political_capital), "id": "political",
+             "name": i18n.t("state.political", lang()),
+             "icon": portrait.icon("scale", "capital")},
+            {**band("capital", c.diplomatic_capital), "id": "diplomatic",
+             "name": i18n.t("state.diplomatic", lang())},
+            {**band("support", coalition), "id": "coalition",
+             "name": i18n.t("state.coalition", lang())},
+            {**band("capital", econ["currency"]), "id": "currency",
+             "name": i18n.t("state.currency", lang())},
+            {**band("power", c.power()), "id": "power",
+             "name": i18n.t("state.power", lang()),
+             "icon": portrait.icon("scale", "power")},
         ],
         "ambience": scene.ambience(w, me, lang()),
         "agenda": [{"id": i.id, "area": i.area_label or i.area,
@@ -634,6 +642,98 @@ def act(payload):
     return {"ok": True, "note": "решение отложено"}
 
 
+def route(method: str, path: str, q: dict | None = None,
+          payload: dict | None = None) -> tuple[int, dict]:
+    """Все точки API без HTTP: путь, параметры запроса, тело → (код, ответ).
+
+    Через неё ходит и сервер, и интерфейс, в котором движок работает
+    прямо в странице (Pyodide). Ответы у двух путей обязаны совпадать,
+    поэтому маршрутизация живёт в одном месте.
+    """
+    q = q or {}
+    payload = payload or {}
+
+    def arg(name: str, default: str) -> str:
+        return q.get(name, [default])[0]
+
+    try:
+        if method == "GET":
+            if path == "/api/openings":
+                return 200, openings()
+            if path == "/api/lang":
+                LANG["v"] = i18n.norm(arg("to", "ru"))
+                return 200, {"lang": LANG["v"],
+                             "strings": {k: i18n.t(k, LANG["v"])
+                                         for k in i18n.table()}}
+            if path == "/api/strings":
+                return 200, {"lang": lang(),
+                             "strings": {k: i18n.t(k, lang())
+                                         for k in i18n.table()}}
+            if path == "/api/search":
+                return 200, search(arg("q", ""))
+            if path == "/api/dashboard":
+                return 200, dashboard()
+            if path == "/api/cabinet":
+                return 200, cabinet()
+            if path == "/api/course":
+                return 200, course()
+            if path == "/api/world":
+                return 200, world_panel()
+            if path == "/api/dossier":
+                return 200, dossier(arg("code", "USA"))
+            if path == "/api/package":
+                return 200, package_view(arg("other", "USA"),
+                                         arg("type", "territory"),
+                                         float(arg("level", "60")))
+            if path == "/api/negotiation":
+                # Пустой тип означает «выбери сам лучший», а не тарифы.
+                return 200, negotiation(arg("other", "USA"), arg("type", ""))
+            if path == "/api/shortlist":
+                w, me = SIM.world, SIM.player
+                m = q.get("ministry", [None])[0]
+                if m:
+                    rows = [person_card(x["person"], x["fit"], x["why"])
+                            for x in gov.shortlist(w, me, m, 4)]
+                else:
+                    t = arg("target", "USA")
+                    best, bfit, bwhy = hr.best_posting(w, me, t)
+                    rows = [person_card(best, bfit, "лучший из резерва: " + bwhy)]
+                    for pp in person_pool(me):
+                        if pp.name == best.name:
+                            continue
+                        fit, why = hr.ambassador_fit(w, pp, t)
+                        rows.append(person_card(pp, fit, why))
+                    rows = rows[:1] + sorted(rows[1:],
+                                             key=lambda x: -x["fit"]["step"])[:3]
+                return 200, {"candidates": rows}
+        elif method == "POST":
+            if path == "/api/save":
+                savegame.save(SIM, SAVE)
+                return 200, {"ok": True, "note": "партия сохранена"}
+            if path == "/api/load":
+                return 200, restore()
+            if path == "/api/start":
+                return 200, start(payload.get("choice", ""))
+            if path == "/api/act":
+                return 200, act(payload)
+            if path == "/api/tick":
+                turn = SIM.tick()
+                return 200, {"turn": turn, "receipt": receipt(turn),
+                             "timeline": turn.get("timeline"),
+                             "ending": turn.get("ending")}
+    except Exception as e:  # noqa: BLE001 — ошибка уходит в ответ, как у сервера
+        return 500, {"error": str(e)}
+    return 404, {"error": "не найдено"}
+
+
+def call(method: str, path: str, query: str = "", body: str = "") -> str:
+    """Тот же маршрут для страницы: строки внутрь, JSON наружу."""
+    code, out = route(method, path, parse_qs(query),
+                      json.loads(body) if body else {})
+    return json.dumps({"code": code, "body": out}, ensure_ascii=False,
+                      default=str)
+
+
 class Handler(BaseHTTPRequestHandler):
     def _send(self, payload, code=200, ctype="application/json"):
         body = payload if isinstance(payload, bytes) else json.dumps(
@@ -680,55 +780,9 @@ class Handler(BaseHTTPRequestHandler):
             if u.path.endswith(".js"):
                 return self._send((WEB / u.path.lstrip("/")).read_bytes(),
                                   ctype="application/javascript")
-            if u.path == "/api/openings":
-                return self._send(openings())
-            if u.path == "/api/lang":
-                LANG["v"] = i18n.norm(q.get("to", ["ru"])[0])
-                return self._send({"lang": LANG["v"],
-                                   "strings": {k: i18n.t(k, LANG["v"])
-                                               for k in i18n.table()}})
-            if u.path == "/api/strings":
-                return self._send({"lang": lang(),
-                                   "strings": {k: i18n.t(k, lang())
-                                               for k in i18n.table()}})
-            if u.path == "/api/search":
-                return self._send(search(q.get("q", [""])[0]))
-            if u.path == "/api/dashboard":
-                return self._send(dashboard())
-            if u.path == "/api/cabinet":
-                return self._send(cabinet())
-            if u.path == "/api/course":
-                return self._send(course())
-            if u.path == "/api/world":
-                return self._send(world_panel())
-            if u.path == "/api/dossier":
-                return self._send(dossier(q.get("code", ["USA"])[0]))
-            if u.path == "/api/package":
-                return self._send(package_view(
-                    q.get("other", ["USA"])[0], q.get("type", ["territory"])[0],
-                    float(q.get("level", ["60"])[0])))
-            if u.path == "/api/negotiation":
-                # Пустой тип означает «выбери сам лучший», а не тарифы.
-                return self._send(negotiation(q.get("other", ["USA"])[0],
-                                              q.get("type", [""])[0]))
-            if u.path == "/api/shortlist":
-                w, me = SIM.world, SIM.player
-                m = q.get("ministry", [None])[0]
-                if m:
-                    rows = [person_card(x["person"], x["fit"], x["why"])
-                            for x in gov.shortlist(w, me, m, 4)]
-                else:
-                    t = q.get("target", ["USA"])[0]
-                    best, bfit, bwhy = hr.best_posting(w, me, t)
-                    rows = [person_card(best, bfit, "лучший из резерва: " + bwhy)]
-                    for pp in person_pool(me):
-                        if pp.name == best.name:
-                            continue
-                        fit, why = hr.ambassador_fit(w, pp, t)
-                        rows.append(person_card(pp, fit, why))
-                    rows = rows[:1] + sorted(rows[1:],
-                                             key=lambda x: -x["fit"]["step"])[:3]
-                return self._send({"candidates": rows})
+            if u.path.startswith("/api/"):
+                code, out = route("GET", u.path, q)
+                return self._send(out, code)
         except Exception as e:
             return self._send({"error": str(e)}, 500)
         self._send({"error": "не найдено"}, 404)
@@ -737,27 +791,38 @@ class Handler(BaseHTTPRequestHandler):
         u = urlparse(self.path)
         n = int(self.headers.get("Content-Length") or 0)
         payload = json.loads(self.rfile.read(n) or b"{}")
+        code, out = route("POST", u.path, None, payload)
+        self._send(out, code)
+
+
+def serve_stdio() -> None:
+    """Движок как процесс-спутник для десктопного клиента.
+
+    Одна строка JSON на запрос: {"method", "path", "query", "body"};
+    одна строка JSON на ответ: {"code", "body"}. Без сети и портов —
+    клиент (Godot, Unity, Unreal) запускает процесс и пишет в stdin.
+    """
+    for line in sys.stdin:
+        line = line.strip()
+        if not line:
+            continue
         try:
-            if u.path == "/api/save":
-                savegame.save(SIM, SAVE)
-                return self._send({"ok": True, "note": "партия сохранена"})
-            if u.path == "/api/load":
-                return self._send(restore())
-            if u.path == "/api/start":
-                return self._send(start(payload.get("choice", "")))
-            if u.path == "/api/act":
-                return self._send(act(payload))
-            if u.path == "/api/tick":
-                turn = SIM.tick()
-                return self._send({"turn": turn, "receipt": receipt(turn),
-                                   "timeline": turn.get("timeline"),
-                                   "ending": turn.get("ending")})
-        except Exception as e:
-            return self._send({"error": str(e)}, 500)
-        self._send({"error": "не найдено"}, 404)
+            req = json.loads(line)
+            body = req.get("body")
+            out = call(req.get("method", "GET"), req.get("path", ""),
+                       req.get("query", ""),
+                       json.dumps(body, ensure_ascii=False) if body else "")
+        except Exception as e:  # noqa: BLE001 — кривой запрос не роняет процесс
+            out = json.dumps({"code": 400, "body": {"error": str(e)}},
+                             ensure_ascii=False)
+        sys.stdout.write(out + "\n")
+        sys.stdout.flush()
 
 
 if __name__ == "__main__":
+    if "--stdio" in sys.argv:
+        serve_stdio()
+        sys.exit(0)
     port = int(sys.argv[1]) if len(sys.argv) > 1 else 8000
     print(f"Депеша слушает http://localhost:{port}")
     HTTPServer(("", port), Handler).serve_forever()
